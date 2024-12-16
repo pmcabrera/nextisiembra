@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cotizaciones de Cereal</title>
+    <!-- Asegúrate de incluir Bootstrap para las pestañas -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/css/styles.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="container-all">
+      <div class="container mt-5">
+        <div class="row">
+          <!-- Bloque 1: Cotización (Soja, Maíz, Trigo) -->
+          <div class="col-md-4">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <a
+                  class="nav-link active"
+                  id="soja-tab"
+                  data-bs-toggle="tab"
+                  href="#soja"
+                  role="tab"
+                  aria-controls="soja"
+                  aria-selected="true"
+                  >Soja</a
+                >
+              </li>
+              <li class="nav-item" role="presentation">
+                <a
+                  class="nav-link"
+                  id="maiz-tab"
+                  data-bs-toggle="tab"
+                  href="#maiz"
+                  role="tab"
+                  aria-controls="maiz"
+                  aria-selected="false"
+                  >Maíz</a
+                >
+              </li>
+              <li class="nav-item" role="presentation">
+                <a
+                  class="nav-link"
+                  id="trigo-tab"
+                  data-bs-toggle="tab"
+                  href="#trigo"
+                  role="tab"
+                  aria-controls="trigo"
+                  aria-selected="false"
+                  >Trigo</a
+                >
+              </li>
+            </ul>
+            <div class="tab-content mt-3" id="myTabContent">
+              <!-- Soja Tab Content -->
+              <div
+                class="tab-pane fade show active"
+                id="soja"
+                role="tabpanel"
+                aria-labelledby="soja-tab"
+              >
+                <div class="row">
+                  {% for item in data['soja'] %}
+                  <div class="col-md-12">
+                    <div class="d-flex align-items-center item">
+                      <span
+                        class="flex-shrink-0"
+                        style="width: 10rem; font-size: 14px"
+                      >
+                        {{ item.name }}
+                      </span>
+                      <span
+                        class="flex-shrink-0 ms-3"
+                        style="width: 6rem; font-size: 14px"
+                      >
+                        {{ item.price }}
+                      </span>
+
+                      <span
+                        class="ms-3 text-end d-flex align-items-center"
+                        style="font-size: 14px; width: 7vh"
+                      >
+                        {% set percent_str = item.percent | replace(',', '.') |
+                        replace('%', '') %} {% set percent = percent_str | float
+                        %} {% if percent > 0 %}
+                        <!-- Mostrar porcentaje positivo en verde -->
+                        <span
+                          class="ms-3 text-end d-flex align-items-center"
+                          style="color: green"
+                          >{{ item.percent }}</span
+                        >
+                        <i
+                          class="fas fa-circle-arrow-up"
+                          style="color: green"
+                        ></i>
+                        {% elif percent < 0 %}
+                        <!-- Mostrar porcentaje negativo en rojo -->
+                        <span class="ms-3 text-end" style="color: red"
+                          >{{ item.percent }}</span
+                        >
+                        <i
+                          class="fas fa-circle-arrow-down"
+                          style="color: red"
+                        ></i>
+                        {% else %}
+                        <!-- Mostrar porcentaje 0 en celeste -->
+                        <span style="color: lightblue">{{ item.percent }}</span>
+                        <i class="fas fa-equals" style="color: lightblue"></i>
+                        {% endif %}
+                      </span>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <!-- Maíz Tab Content -->
+              <div
+                class="tab-pane fade"
+                id="maiz"
+                role="tabpanel"
+                aria-labelledby="maiz-tab"
+              >
+                <div class="row">
+                  {% for item in data['maiz'] %}
+                  <div class="col-md-12">
+                    <div class="d-flex align-items-center item">
+                      <span
+                        class="flex-shrink-0"
+                        style="width: 10rem; font-size: 14px"
+                      >
+                        {{ item.name }}
+                      </span>
+                      <span
+                        class="flex-shrink-0 ms-3"
+                        style="width: 6rem; font-size: 14px"
+                      >
+                        {{ item.price }}
+                      </span>
+                      <span
+                        class="ms-3 text-end d-flex align-items-center"
+                        style="font-size: 14px; width: 7vh"
+                      >
+                        {% set percent_str = item.percent | replace(',', '.') |
+                        replace('%', '') %} {% set percent = percent_str | float
+                        %} {% if percent > 0 %}
+                        <span style="color: green">{{ item.percent }}</span>
+                        <i
+                          class="fas fa-circle-arrow-up"
+                          style="color: green"
+                        ></i>
+                        {% elif percent < 0 %}
+                        <span style="color: red">{{ item.percent }}</span>
+                        <i
+                          class="fas fa-circle-arrow-down"
+                          style="color: red"
+                        ></i>
+                        {% else %}
+                        <span style="color: lightblue">{{ item.percent }}</span>
+                        <i class="fas fa-equals" style="color: lightblue"></i>
+                        {% endif %}
+                      </span>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <!-- Trigo Tab Content -->
+              <div
+                class="tab-pane fade"
+                id="trigo"
+                role="tabpanel"
+                aria-labelledby="trigo-tab"
+              >
+                <div class="row">
+                  {% for item in data['trigo'] %}
+                  <div class="col-md-12">
+                    <div class="d-flex align-items-center item">
+                      <span
+                        class="flex-shrink-0"
+                        style="width: 10rem; font-size: 14px"
+                      >
+                        {{ item.name }}
+                      </span>
+                      <span
+                        class="flex-shrink-0 ms-3"
+                        style="width: 6rem; font-size: 14px"
+                      >
+                        {{ item.price }}
+                      </span>
+                      <span
+                        class="ms-3 text-end d-flex align-items-center"
+                        style="font-size: 14px; width: 7vh"
+                      >
+                        {% set percent_str = item.percent | replace(',', '.') |
+                        replace('%', '') %} {% set percent = percent_str | float
+                        %} {% if percent > 0 %}
+                        <span style="color: green">{{ item.percent }}</span>
+                        <i
+                          class="fas fa-circle-arrow-up"
+                          style="color: green"
+                        ></i>
+                        {% elif percent < 0 %}
+                        <span style="color: red">{{ item.percent }}</span>
+                        <i
+                          class="fas fa-circle-arrow-down"
+                          style="color: red"
+                        ></i>
+                        {% else %}
+                        <span style="color: lightblue">{{ item.percent }}</span>
+                        <i class="fas fa-equals" style="color: lightblue"></i>
+                        {% endif %}
+                      </span>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <!-- Bloque 2: Bolsas y Cereal (o lo que llamas "bolsaycot") -->
+<div class="col-md-4">
+  <div class="weather-block">
+    <div class="title-container ">
+      <span class="title">Bolsas y monedas</span>
+    </div>
+
+    {% for section, items in data['bolsaycot'].items() %}
+      {% for item in items %}
+        <div class="d-flex align-items-center item mb-3">
+          <!-- Nombre de la sección -->
+          <span  class="flex-shrink-0 myElement" style="width: 10rem; font-size: 14px;">
+            {{ item.name }}
+          </span>
+          
+          <!-- Precio -->
+          <span class="flex-shrink-0 ms-3" style="width: 4rem; font-size: 14px;">
+            {{ item.price }}
+          </span>
+          
+          <!-- Porcentaje y su icono -->
+          <span class="ms-3 text-end d-flex align-items-center" style="font-size: 14px; width: 12vh;">
+            {% set percent_str = item.percent | replace(',', '.') | replace('%', '') %}
+            {% set percent = percent_str | float %}
+            {% if percent > 0 %}
+              <span style="color: green">{{ item.percent }}</span>
+              <i class="fas fa-circle-arrow-up" style="color: green"></i>
+            {% elif percent < 0 %}
+              <span style="color: red">{{ item.percent }}</span>
+              <i class="fas fa-circle-arrow-down" style="color: red"></i>
+            {% else %}
+              <span style="color: lightblue">{{ item.percent }}</span>
+              <i class="fas fa-equals" style="color: lightblue"></i>
+            {% endif %}
+          </span>
+        </div>
+      {% endfor %}
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Bloque 3: Clima -->
+<div class="col-md-4">
+  <div class="weather-block-clima">
+    <div class="title-container">
+      <span class="title">Clima en Rosario</span>
+    </div>
+    <div class="forecast-container d-flex justify-content-between">
+      {% for forecast in data.weather.forecast %}
+      <div class="forecast-column text-center">
+        <!-- Día de la semana -->
+        <p class="forecast-date"><strong>{{ forecast.day_name }}</strong></p>
+
+        <!-- Temperaturas -->
+        <p class="forecast-temp">
+          {{ forecast.min_temp }}° / {{ forecast.max_temp }}°
+        </p>
+
+        <!-- Descripción del clima e ícono -->
+        <div class="forecast-weather">
+          <i class="{{ forecast.weather_icon }}"></i>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+
+
+    <!-- Asegúrate de incluir Bootstrap JS para el funcionamiento de las pestañas -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/script.js"></script>
+  </body>
+
+</html>

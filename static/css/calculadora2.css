@@ -1,0 +1,94 @@
+@font-face {
+    font-family: 'GeoGrotesqueCRYRegular';
+    src: url('../fonts/geogrotesquecyr-medium.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'GeoGrotesqueCYRMedium';
+    src: url('../fonts/geogrotesquecyr-medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'GeoGrotesqueCRYLight';
+    src: url('../fonts/geogrotesquecry-light.otf') format('truetype');
+    font-weight: light;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'GeoGrotesqueCRYBold';
+    src: url('../fonts/geogrotesquecry-bold.otf') format('opentype'); /* Debes usar 'opentype' para fuentes .otf */
+    font-weight: bold; /* 'bold' o número (700 es común para negrita) */
+    font-style: normal; /* 'normal' para no ser cursiva */
+  }
+
+
+/* Estilo para cuando el aside está cerrado */
+aside.close {
+    position: fixed; /* Fija el aside en la pantalla */
+    right: -74.8rem; /* Lo oculta, dejando solo una parte visible a la derecha */
+    top: 50%; /* Centrado verticalmente en la ventana */
+    transform: translateY(-50%); /* Mantiene el centro real */
+    width: 80rem; /* Ancho total del aside */
+    transition: right 0.4s ease-in-out; /* Animación suave */
+    opacity: 1;
+    
+}
+
+aside.open {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 80rem;
+    height: 100vh;
+    transition: right 0.4s ease-in-out;
+}
+
+/* Estilo para el texto vertical de "Cotizador Online" */
+aside .calculadora-container > .picker-text {
+    writing-mode: vertical-rl; /* Texto en vertical, de abajo hacia arriba */
+    transform: rotate(180deg); /* Ajusta el sentido de la lectura */
+    font-size: 1rem; /* Tamaño del texto */
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    top: 1rem; /* Ajusta la posición en la parte superior */
+    left: 1rem; /* Ajusta la separación desde la izquierda */
+    white-space: nowrap; /* Evita que el texto se quiebre */
+    z-index: 4;
+    font-family: 'GeoGrotesqueCRYRegular', sans-serif;
+    letter-spacing: 4px;
+    text-shadow: none;
+}
+
+/* Estilos adicionales para la calculadora */
+aside .calculadora-container {
+    position: absolute; /* Cambia a absolute para evitar que afecte la posición del aside */
+    right: 0; /* Fija el contenedor al borde derecho */
+    top: 50%; /* Lo posiciona en el centro vertical */
+    transform: translateY(-50%); /* Ajusta el centro real con un desplazamiento */
+    min-width: 77.5rem; /* Ancho visible de la calculadora */
+    display: flex;
+    justify-content: flex-start;
+    padding: 1.75rem 0 1.5rem 1.32rem;
+    background: #ffff;
+    border-radius: 0 0 0 25px;
+    gap: 0 1.25rem;
+   
+    min-height: 70vh; /* Ajusta el alto mínimo */
+    padding: 2rem;
+    padding-leFT: 6rem;
+}
+
+/* Cuando el aside está en estado cerrado, solo el texto es visible */
+aside.close .calculadora-container {
+    width: 5rem; /* Solo una pequeña parte visible */
+    background-color: #E9532D;
+}
+
+

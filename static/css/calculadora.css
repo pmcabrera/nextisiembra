@@ -1,0 +1,369 @@
+
+@font-face {
+  font-family: 'GeogrotesqueCyr-Bold';
+  src: url('../fonts/GeogrotesqueCyr-Bold.woff2') format('woff2'),
+       url('../fonts/GeogrotesqueCyr-Bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GeogrotesqueCyr-Regular';
+  src: url('../fonts/GeogrotesqueCyr-Regular.woff2') format('woff2'),
+       url('../fonts/GeogrotesqueCyr-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GeogrotesqueCyr-Light';
+  src: url('../fonts/GeogrotesqueCyr-Light.woff2') format('woff2'),
+       url('../fonts/GeogrotesqueCyr-Light.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+aside.close {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra negra */
+}
+
+
+/* Estilo para cuando el aside está cerrado */
+aside.close {
+  position: fixed; /* Fija el aside en la pantalla */
+  right: -74.8rem; /* Lo oculta, dejando solo una parte visible a la derecha */
+  top: 50%; /* Centrado verticalmente en la ventana */
+  transform: translateY(-50%); /* Mantiene el centro real */
+  width: 80rem; /* Ancho total del aside */
+  transition: right 0.4s ease-in-out; /* Animación suave */
+  opacity: 1;
+  background-color: #000;
+  z-index: 9999;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2); /* Sombra negra */
+}
+  
+
+aside.open {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 80rem;
+  height: 100vh;
+  transition: right 0.4s ease-in-out;
+  z-index: 9999;
+  
+}
+
+/* Estilo para el texto vertical de "Cotizador Online" */
+aside .calculadora-container > .picker-text {
+  writing-mode: vertical-rl; /* Texto en vertical, de abajo hacia arriba */
+  transform: rotate(180deg); /* Ajusta el sentido de la lectura */
+  font-size: 1rem; /* Tamaño del texto */
+  text-align: center;
+  cursor: pointer;
+  position: absolute;
+  top: 1rem; /* Ajusta la posición en la parte superior */
+  left: 1rem; /* Ajusta la separación desde la izquierda */
+  white-space: nowrap; /* Evita que el texto se quiebre */
+  z-index: 4;
+  font-family: 'GeogrotesqueCyr-Bold';
+  letter-spacing: 4px;
+  text-shadow: none;
+  margin-top: 25px;
+}
+
+/* Estilo para el contenedor de la calculadora */
+aside .calculadora-container {
+  position: absolute; /* Cambia a relative para que el botón se posicione en relación a este contenedor */
+  right: 0; /* Fija el contenedor al borde derecho */
+  top: 52%; /* Lo posiciona en el centro vertical */
+  transform: translateY(-50%); /* Ajusta el centro real con un desplazamiento */
+  min-width: 77.5rem; /* Ancho visible de la calculadora */
+  display: flex;
+  flex-direction: column; /* Cambia a columna para apilar elementos verticalmente */
+  padding: 2rem; /* Espaciado interno */
+  background: #ffff;
+  border-radius: 0 0 0 25px;
+  min-height: 55vh; /* Ajusta el alto mínimo */
+  z-index: 9999;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4); /* Sombra negra */
+}
+
+/* Estilos para el botón de cerrar */
+
+.close-btn {
+  position: relative;
+  width: 10px;
+  top: 0;
+  left: 72rem;
+  background: transparent; /* Sin fondo para el botón */
+  border: 1px #000; /* Sin borde */
+  cursor: pointer; /* Cambia el cursor a mano */
+}
+
+/* Cuando el aside está en estado cerrado, solo el texto es visible */
+aside.close .calculadora-container {
+  width: 5rem; /* Solo una pequeña parte visible */
+  background-color: #E9532D;
+}
+/* contect calguladora */
+/* Estilo general para la calculadora */
+.calculadora-content {
+  display: flex; /* Flexbox para crear columnas */
+  width: 100%; /* Ancho completo del contenedor */
+}
+
+/* Columna izquierda */
+.left-column {
+  flex: 60%; /* 60% de ancho */
+  padding-right: 2rem; /* Espaciado a la derecha */
+  padding-left: 6rem
+}
+
+/* Columna derecha */
+.right-column {
+  flex: 40%;
+  display: flex;             /* Activa flexbox */
+  flex-direction: column;     /* Alinea los elementos en columna */
+  justify-content: center;    /* Centra verticalmente */
+  align-items: flex-start;           /* Centra horizontalmente (opcional) */
+  text-align: center;   
+  padding-left: 50px;
+}
+
+/* Línea separadora */
+.separator {
+  width: 1px; /* Ancho de la línea */
+  background-color: #ccc; /* Color de la línea */
+  margin: 0 1rem; /* Espaciado horizontal */
+}
+
+/* Estilos para los títulos */
+h1 {
+  font-size: 2rem; /* Tamaño del título principal */
+  margin-bottom: 1rem; /* Margen inferior */
+  color: #E9532D;
+  text-transform: uppercase;
+  font-family: 'GeogrotesqueCyr-Bold';
+  letter-spacing: 2px;
+}
+
+h2 {
+  font-size: 1.2rem; /* Tamaño de los subtítulos */
+  margin: 0.5rem 0; /* Margen vertical */
+  color: #E9532D;
+  font-family: 'GeogrotesqueCyr-Bold';
+}
+
+.lineas {
+  margin-top: 15px;
+}
+
+
+.border-radio{
+  border-radius: 20px;
+  background: #fff;
+  padding-top: 5px;
+  padding-left: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc; /* Borde de 2px de grosor y color gris */ 
+} 
+
+label:after{
+ background: #ccc;
+} 
+
+
+/* Estilos para el input */
+
+input[type="text"]{
+  height: 40px;
+  width: 100%; /* Ancho completo */
+  padding: 0.5rem; /* Espaciado interno */
+  padding-left: 15px;
+  border: 1px solid #ccc; /* Borde */
+  border-radius: 20px; /* Bordes redondeados */
+  margin-bottom: 1rem; /* Margen inferior */
+  font-family: 'GeogrotesqueCyr-Regular';
+}
+
+/* Espaciado entre el texto y el radio button */
+label {
+  padding-left: 30px;
+  color: #000;
+  font-family: 'GeogrotesqueCyr-Regular'; ;
+}
+
+
+
+select {
+  width: 100%; /* Ancho completo */
+  padding: 0.5rem; /* Espaciado interno */
+  border: 1px solid #ccc; /* Borde */
+  border-radius: 20px; /* Bordes redondeados */
+  margin-bottom: 1rem; /* Margen inferior */
+  padding-left: 10px;
+  font-family: 'GeogrotesqueCyr-Regular';
+}
+
+/* Agrupación de radio buttons */
+.radio-group {
+  display: flex;
+  flex-direction: column; /* Coloca los radio buttons en columna */
+}
+
+/* Estilos para el botón de cotización */
+.cotizacion-btn {
+  padding: 0.5rem 1rem; /* Espaciado interno */
+  background-color: #E9532D; /* Color de fondo */
+  color: #fff; /* Color del texto */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor en forma de mano */
+  font-size: 1rem; /* Tamaño de la fuente */
+  transition: background-color 0.3s; /* Efecto al pasar el cursor */
+  font-family: 'GeogrotesqueCyr-Bold';
+  text-transform: uppercase;
+}
+
+.cotizacion-btn:hover {
+  background-color: #d34424; /* Color de fondo al pasar el cursor */
+}
+
+/* Estilos específicos para el monto estimado */
+.monto-estimado {
+  font-size: 1,5 rem; /* Tamaño del título */
+  margin-bottom: 0.5rem; /* Margen inferior */
+  color: #000;
+  font-family: 'GeogrotesqueCyr-Bold';
+}
+
+.estimacion {
+  font-size: 1.2rem; /* Tamaño del monto */
+}
+
+.dolar {
+  color: #000;
+  font-family: 'GeogrotesqueCyr-Bold';
+  font-size: 3rem;
+}
+
+.cantidad {
+  font-family: 'GeogrotesqueCyr-Bold';
+  font-size: 4rem;
+  color: #d34424;
+}
+
+@media (min-width: 768px) and (max-width: 1440px) {
+ 
+  aside .calculadora-container {
+    position: absolute; /* Cambia a relative para que el botón se posicione en relación a este contenedor */
+    right: 7rem;/* Fija el contenedor al borde derecho */
+    top: 57%; /* Lo posiciona en el centro vertical */
+    transform: translateY(-50%); /* Ajusta el centro real con un desplazamiento */
+    min-width: 70.5rem; /* Ancho visible de la calculadora */
+    display: flex;
+    flex-direction: column; /* Cambia a columna para apilar elementos verticalmente */
+    padding: 2rem; /* Espaciado interno */
+    background: #ffff;
+    border-radius: 0 0 0 25px;
+    min-height: 62vh; /* Ajusta el alto mínimo */
+    z-index: 9999;
+  }
+
+  aside.open {
+    
+    right: -10rem;/* Fija el contenedor al borde derecho */
+    min-height: 62vh; /* Ajusta el alto mínimo */
+   
+  }
+
+  h1 {
+    font-size: 2rem; /* Tamaño del título principal */
+    margin-bottom: 1rem; /* Margen inferior */
+    margin-top: -2rem;
+    color: #E9532D;
+    text-transform: uppercase;
+    font-family: 'GeogrotesqueCyr-Bold';
+    letter-spacing: 2px;
+  }
+  
+  .lineas {
+    margin-bottom: -2px;
+  }
+
+  .radio-group {
+    margin-bottom: -5px;
+  }
+  
+  h2 {
+    font-size: 1rem; /* Tamaño de los subtítulos */
+    margin: 0.5rem 0; /* Margen vertical */
+    color: #E9532D;
+    font-family: 'GeogrotesqueCyr-Bold';
+  }
+
+  .close-btn {
+    position: relative;
+    width: 10px;
+    top: 0;
+    left: 61rem;
+    background: transparent; /* Sin fondo para el botón */
+    border: 1px #000; /* Sin borde */
+    cursor: pointer; /* Cambia el cursor a mano */
+  }
+}
+
+/* Estilos predeterminados */
+
+/* Estilos cuando el radio está seleccionado */
+.border-radio.active {
+  border-color: #E9532D;
+  background-color: #E9532D;
+  
+}
+
+.border-radio.active label {
+  font-family: 'GeogrotesqueCyr-Regular'; ;
+  color: #fff
+}
+
+
+
+/* Ocultar el radio button nativo */
+input[type="radio"] {
+  display: none;
+}
+
+/* Estilos personalizados para el radio button */
+label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+}
+
+label span {
+  flex-grow: 1;
+}
+
+/* Botón de radio personalizado */
+label::after {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  background-color: #000;
+  vertical-align: middle;
+}
+
+/* Cambiar estilo cuando el radio button está seleccionado */
+input[type="radio"]:checked + label::after {
+  background-color: #007bff;
+  border-color: #007bff;
+  box-shadow: inset 0 0 0 4px white;
+  
+}
